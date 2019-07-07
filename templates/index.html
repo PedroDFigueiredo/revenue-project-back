@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>"Title"</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var transactions = "{{ transactions }}";
+        console.log(transactions);
+    </script>
+    {% for transaction in transactions %}
+        <div>{{ transaction.description }}</div>
+    {% endfor %}
+
+</body>
+</html>
