@@ -17,13 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from django.conf import settings
-
 from apps.transactions.views import TransactionsView
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
 	url(r'^api/', include('apps.transactions.api.urls')),
-	url(r'^transactions/', TransactionsView.as_view())
+	url(r'^transactions/', TransactionsView.as_view()),
 ]
 
 if settings.DEBUG:

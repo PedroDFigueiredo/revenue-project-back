@@ -1,11 +1,9 @@
-from django.shortcuts import render
-
 # Create your views here.
-from django.views.generic import ListView
+from django.views.generic import TemplateView
 from apps.transactions.models import Transaction
 
 
-class TransactionsView(ListView):
+class TransactionsView(TemplateView):
 	template_name = 'index.html'
 	queryset = Transaction.objects.all()
 

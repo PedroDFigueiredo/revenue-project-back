@@ -1,17 +1,15 @@
+{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>"Title"</title>
+    <title>Django React Webpack</title>
+    <!-- Webpack rendered CSS -->
+    {% render_bundle 'main' 'css' %}
 </head>
 <body>
-    <script type="text/javascript">
-        var transactions = "{{ transactions }}";
-        console.log(transactions);
-    </script>
-    {% for transaction in transactions %}
-        <div>{{ transaction.description }}</div>
-    {% endfor %}
-
+    <div id="react-app"></div>
+    <!-- Webpack rendered JS -->
+    {% render_bundle 'main' 'js' %}
 </body>
 </html>
