@@ -14,3 +14,4 @@ class TransactionsView(TemplateView):
 		# finalizaEtapa(etapa)
 
 		return p
+
