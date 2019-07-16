@@ -13,12 +13,16 @@ class TransactionViewSet(viewsets.ModelViewSet):
 class TransactionsAggregated(views.APIView):
 
     def get(self, request, **kwargs):
-        transactions = Transaction.objects.all()
+        transactions = Transaction.objects.all().order_by('date')
         month_hash = {}
 
         for transaction in transactions:
-            month_hash.setDefault(transaction.date.month, 0)
-            month_hash[transaction.date.month] += transaction.value
+            key = transaction.date.strftime("%b-%Y")
+            month_hash.setdefault(key, {'spent': 0, 'deposit': 0})
+            if transaction.value > 0:
+                month_hash[key]['deposit'] += transaction.value
+            else:
+                month_hash[key]['spent'] -= transaction.value
 
         return Response(month_hash)
 

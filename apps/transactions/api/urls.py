@@ -8,5 +8,5 @@ router.register(r'transaction', TransactionViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^transactions-aggregated/', TransactionsAggregated.as_view()),
+    url(r'^transactions-aggregated', TransactionsAggregated.as_view()),
 ]
